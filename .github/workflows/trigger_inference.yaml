@@ -1,0 +1,22 @@
+name: trigger inference
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inferencejob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR checkout
+      uses: actions/checkout@v2
+
+    - name: Install requirements
+      run: |
+          echo "Installing dependencies and caching them."
+          pip install -r requirements.txt
+
+    - name: Test env for python
+      env:
+        access_token: ${{ secrets.ACCESS_TOKEN }}
+      run: python main.py
+    
