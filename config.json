@@ -1,0 +1,7 @@
+{
+    "owner": "darsh97",
+    "repository": "cfndeploy",
+    "api": {
+      "trigger": "https://api.github.com/repos/{owner}/{repo}/dispatches"
+    }
+  }
