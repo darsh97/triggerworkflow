@@ -1,0 +1,17 @@
+name: product1 inference
+
+on:
+  repository_dispatch:
+    types: [ product1_inference ]
+  workflow_dispatch:
+
+env:
+  access_token: ${{ secrets.ACCESS_TOKEN }}
+
+jobs:
+  inferencejob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR checkout
+      uses: actions/checkout@v2
+    

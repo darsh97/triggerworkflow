@@ -9,8 +9,7 @@ PREFIX: str = "consolidated"
 
 def get_access_token():
     env_file = os.getenv("GITHUB_ENV")
-    with open(env_file, 'r') as f:
-        pass
+    return ""
 
 
 def check_object_exists(prefix):
@@ -23,5 +22,6 @@ object_exists: bool = check_object_exists(PREFIX)
 
 if object_exists:
     pass
+    # use access token to call workflow
 
     
