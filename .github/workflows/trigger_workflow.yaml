@@ -1,6 +1,9 @@
 name: product1 inference
 
 on:
+  repository_dispatch:
+    types: [ product1_inference ]
+  
   workflow_dispatch:
 
 jobs:
@@ -10,8 +13,6 @@ jobs:
     - name: PR checkout
       uses: actions/checkout@v2
 
-    - name: Test env for python
-      env:
-        access_token: ${{ secrets.ACCESS_TOKEN }}
-      run: python main.py
+    - name: InferenceJob
+      run: echo "run inference job"
     
