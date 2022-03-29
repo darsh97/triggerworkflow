@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 env:
-  access_token: ${{ secrets.ACCESS_TOKEN }}
 
 jobs:
   inferencejob:
@@ -14,4 +13,9 @@ jobs:
     steps:
     - name: PR checkout
       uses: actions/checkout@v2
+
+    - name: Test env for python
+      env:
+        access_token: ${{ secrets.ACCESS_TOKEN }}
+      run: python main.py
     
