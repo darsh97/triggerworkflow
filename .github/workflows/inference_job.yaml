@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: PR checkout
       uses: actions/checkout@v2
-
+      
     - name: InferenceJob
       run: echo "run inference job"
     

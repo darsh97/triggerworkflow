@@ -18,5 +18,8 @@ jobs:
     - name: Test env for python
       env:
         access_token: ${{ secrets.ACCESS_TOKEN }}
+        AWS_ACCESS_KEY_ID: AKIAWJXAAGDYHDF5OTON
+        AWS_SECRET_ACCESS_KEY: zEYUoSMvxKnXyKmStO2L/2qoXPU+f+c4s4jk3a1UylpD1iZ5x0QJDgoYsJhRH
+        AWS_DEFAULT_REGION: 'us-east-1'
       run: python main.py
     
