@@ -17,7 +17,7 @@ EVENT_TYPE: final = "product1_inference"
 ############## HELPERS #################
 
 def check_object_exists(prefix):
-    objects = [*bucket.objects.filter(Prefix=prefix)]
+    objects = [*BUCKET.objects.filter(Prefix=prefix)]
     return bool(len(objects))
 
 def get_access_token():
