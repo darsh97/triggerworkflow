@@ -2,12 +2,10 @@ import os
 
 
 def get_access_token():
-    
-    env_file = os.getenv("GITHUB_ENV")
-    print( '\n'.join([f'{k}: {v}' for k, v in sorted(os.environ.items())]) )    
+    access_token = os.environ.get("access_token")
+    return access_token
 
-
-get_access_token()  
+print(f"access token is {get_access_token()}")
 
 """s3 = boto3.resource('s3')
 BUCKET = s3.Bucket("codebucket234")
