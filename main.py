@@ -42,13 +42,13 @@ if object_exists:
     repo: str = config[REPO]
     trigger_req_api: str = config[API][TRIGGER_REQUEST]
 
-    headers: dict[str, str] = {
+    headers = {
         "Authorization": f"token {access_token}",
         "Accept": "application/vnd.github.v3+json",
     }
 
     trigger_request: str = trigger_req_api.format(owner=owner, repo=repo)
-    event_data: dict[str, str] = {"event_type": EVENT_TYPE}
+    event_data = {"event_type": EVENT_TYPE}
     
     response = requests.post(
         url=trigger_request,
