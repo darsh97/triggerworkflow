@@ -1,6 +1,6 @@
 import os
 import boto3
-
+from typing import final
 ############## CONSTANTS #################
 
 s3 = boto3.resource('s3')
