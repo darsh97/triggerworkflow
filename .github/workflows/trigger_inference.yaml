@@ -1,10 +1,12 @@
 name: trigger inference
 
 on:
+  schedule:
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 jobs:
-  inferencejob:
+  triggerinferencejob:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
