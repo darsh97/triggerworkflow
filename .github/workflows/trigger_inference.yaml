@@ -22,9 +22,12 @@ jobs:
         AWS_ACCESS_KEY_ID: AKIAWJXAAGDYEM6T7RK5
         AWS_SECRET_ACCESS_KEY: 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
         AWS_DEFAULT_REGION: 'us-east-1'
-      run: python main.py
+      run: |
+        output=$(python main.py)
+        echo "::set-output name=response::$output"
+
       
     - name: Check preprocess output
       run: |
-        echo '${{ steps.preprocess.outputs }}'
+        echo '${{ steps.preprocess.outputs.response }}'
     
