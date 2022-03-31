@@ -58,6 +58,9 @@ def get_config_file_details(config_file_path: str):
 
 object_exists: bool = check_object_exists(PREFIX)
 
+if not object_exists:
+    print('FAIL')
+    
 if object_exists:
     access_token: str = get_access_token()
     config = get_config_file_details(CONFIG_FILE)
