@@ -18,10 +18,15 @@ jobs:
           pip install -r requirements.txt
 
     - name: Test env for python
+      id: preprocess
       env:
         access_token: ${{ secrets.ACCESS_TOKEN }}
         AWS_ACCESS_KEY_ID: AKIAWJXAAGDYEM6T7RK5
         AWS_SECRET_ACCESS_KEY: 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
         AWS_DEFAULT_REGION: 'us-east-1'
       run: python main.py
+      
+    - name: Check preprocess output
+      run: |
+        echo '${{ steps.preprocess.outputs }}'
     
