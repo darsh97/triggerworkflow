@@ -22,12 +22,27 @@ jobs:
         AWS_ACCESS_KEY_ID: AKIAWJXAAGDYEM6T7RK5
         AWS_SECRET_ACCESS_KEY: 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
         AWS_DEFAULT_REGION: 'us-east-1'
-      run: |
-        output=$(python main.py)
-        echo "::set-output name=response::$output"
-
+      run: python main.py
       
-    - name: Check preprocess output
-      run: |
-        echo '${{ steps.preprocess.outputs.response }}'
+  job2:
+    needs: triggerinferencejob
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR checkout
+      uses: actions/checkout@v2
+    - name: somestep
+      run: echo "hello from job2"
+      
+  job3:
+    needs: triggerinferencejob
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR checkout
+      uses: actions/checkout@v2
+    - name: somestep
+      run: echo "hello from job3"
     
+
+
+
+
