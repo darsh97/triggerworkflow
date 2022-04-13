@@ -44,6 +44,11 @@ jobs:
     needs: [triggerinferencejob, job2, job3]
 
     steps:
+    - uses: technote-space/workflow-conclusion-action@v2
+
+    - name: check workflow
+      run: echo {{env.WORKFLOW_CONCLUSION}}
+
     - name: Send mail
       uses: dawidd6/action-send-mail@v2
       with:
