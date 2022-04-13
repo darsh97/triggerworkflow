@@ -22,7 +22,7 @@ jobs:
       run: exit 1
 
     - name: somestep
-      run: echo ${{ job.status }} > ./job2_status.txt
+      run: echo ${{ job.status }} > job2_status.txt
       
   job3:
     if: always()
