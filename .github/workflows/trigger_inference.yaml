@@ -18,11 +18,8 @@ jobs:
     - name: PR checkout
       uses: actions/checkout@v2
 
-    - name: training_job2
-      run: exit 1
-
     - name: somestep
-      run: echo ${{ job.status }} > job2_status.txt
+      run: echo Running job2
       
   job3:
     if: always()
@@ -33,10 +30,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: training_job3
-      run: echo dummy run
-
-    - name: somestep
-      run: echo ${{ job.status }} > job3_status.txt
+      run: echo dummy run job 3
   
   sendmail:
     runs-on: ubuntu-latest
@@ -61,7 +55,7 @@ jobs:
         # email subject
         subject: test subject
         # email body as text
-        body: test body
+        body: The result of workflow is ${{ env.WORKFLOW_CONCLUSION }} 
         # comma-separated string, send email to
         to: darrshan13897.da@gmail.com
         # from email name
