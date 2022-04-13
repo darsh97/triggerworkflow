@@ -23,7 +23,7 @@ jobs:
       continue-on-error: true
 
     - name: somestep
-      run: echo ${{ job.status }} > job2_status.txt
+      run: echo ${{ job.status }} > ./job2_status.txt
       
   job3:
     if: always()
