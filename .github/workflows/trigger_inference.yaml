@@ -32,6 +32,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: training_job3
+      run: echo completed training job 3
       continue-on-error: true
 
     - name: somestep
