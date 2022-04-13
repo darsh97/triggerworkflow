@@ -30,7 +30,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: training_job3
-      run: echo dummy run job 3
+      run: exit 1
   
   sendmail:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
         # email subject
         subject: test subject
         # email body as text
-        body: The result of workflow is ${{ env.WORKFLOW_CONCLUSION }} 
+        body: The result of workflow ${{ github.workflow }} is ${{ env.WORKFLOW_CONCLUSION }} 
         # comma-separated string, send email to
         to: darrshan13897.da@gmail.com
         # from email name
