@@ -33,7 +33,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: training_job3
-      run: dummy run
+      run: echo dummy run
 
     - name: somestep
       run: echo ${{ job.status }} > job3_status.txt
