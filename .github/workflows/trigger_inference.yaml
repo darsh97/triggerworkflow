@@ -9,22 +9,9 @@ jobs:
     steps:
     - name: PR checkout
       uses: actions/checkout@v2
-
-    - name: Install requirements
-      run: |
-          echo "Installing dependencies and caching them."
-          pip install -r requirements.txt
-
-    - name: Test env for python
-      id: preprocess
-      env:
-        access_token: ${{ secrets.ACCESS_TOKEN }}
-        AWS_ACCESS_KEY_ID: AKIAWJXAAGDYEM6T7RK5
-        AWS_SECRET_ACCESS_KEY: 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
-        AWS_DEFAULT_REGION: 'us-east-1'
-      run: python main.py
       
   job2:
+    if: always()
     needs: triggerinferencejob
     runs-on: ubuntu-latest
     steps:
@@ -34,15 +21,26 @@ jobs:
       run: echo "hello from job2"
       
   job3:
-    needs: triggerinferencejob
+    if: always()
+    needs: job2
     runs-on: ubuntu-latest
     steps:
     - name: PR checkout
       uses: actions/checkout@v2
     - name: somestep
       run: echo "hello from job3"
-    
 
+  jobhealth:
+    if: always()
+    needs: [triggerinferencejob, job3, job2]
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR checkout
+      uses: actions/checkout@v2
+    - name: somestep
+      run: |
+          echo triggerinferencejob: ${{ triggerinferencejob.status }}
+          echo job2: ${{ job2.status }}
+          echo job3: ${{ job3.status }}
 
-
-
+          
