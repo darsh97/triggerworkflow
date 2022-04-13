@@ -18,7 +18,7 @@ jobs:
     - name: PR checkout
       uses: actions/checkout@v2
     - name: somestep
-      run: echo "hello from job2"
+      run: echo ${{ job.status }}
       
   job3:
     if: always()
@@ -28,19 +28,4 @@ jobs:
     - name: PR checkout
       uses: actions/checkout@v2
     - name: somestep
-      run: echo "hello from job3"
-
-  jobhealth:
-    if: always()
-    needs: [triggerinferencejob, job3, job2]
-    runs-on: ubuntu-latest
-    steps:
-    - name: PR checkout
-      uses: actions/checkout@v2
-    - name: somestep
-      run: |
-          echo triggerinferencejob: ${{ triggerinferencejob.status }}
-          echo job2: ${{ job2.status }}
-          echo job3: ${{ job3.status }}
-
-          
+      run: echo ${{ job.status }}          
