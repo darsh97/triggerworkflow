@@ -20,7 +20,6 @@ jobs:
 
     - name: training_job2
       run: exit 1
-      continue-on-error: true
 
     - name: somestep
       run: echo ${{ job.status }} > ./job2_status.txt
@@ -35,7 +34,6 @@ jobs:
 
     - name: training_job3
       run: dummy run
-      continue-on-error: true
 
     - name: somestep
       run: echo ${{ job.status }} > job3_status.txt
