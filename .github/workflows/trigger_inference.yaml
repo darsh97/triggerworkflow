@@ -39,23 +39,27 @@ jobs:
 
     - name: somestep
       run: echo ${{ job.status }} > job3_status.txt
-
-  - name: Send mail
+  
+  sendmail:
+    runs-on: ubuntu-latest
     if: always()
     needs: [triggerinferencejob, job2, job3]
-    uses: dawidd6/action-send-mail@v2
-    with:
-      # mail server settings
-      server_address: smtp.gmail.com
-      server_port: 465
-      # user credentials
-      username: ${{ secrets.EMAIL_USERNAME }}
-      password: ${{ secrets.EMAIL_PASSWORD }}
-      # email subject
-      subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
-      # email body as text
-      body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
-      # comma-separated string, send email to
-      to: darrshanaravind13897@gmail.com
-      # from email name
-      from: Darshan
+
+    steps:
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+        # mail server settings
+        server_address: smtp.gmail.com
+        server_port: 465
+        # user credentials
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        # email subject
+        subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+        # email body as text
+        body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+        # comma-separated string, send email to
+        to: darrshanaravind13897@gmail.com
+        # from email name
+        from: Darshan
